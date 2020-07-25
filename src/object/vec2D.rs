@@ -50,3 +50,17 @@ impl std::ops::Div<f64> for Vec2D {
         Vec2D {x: self.x / other, y: self.y / other}
     }
 }
+
+impl std::cmp::PartialEq for Vec2D {
+    fn eq(&self, other: &Self) -> bool {
+        self.x == other.x && self.y == other.y
+    }
+}
+
+impl std::cmp::PartialOrd for Vec2D {
+    fn partial_cmp(&self, other: &Self) -> Option<std::cmp::Ordering> {
+        if self.eq(other) {return Some(std::cmp::Ordering::Equal)}
+        else if self.x > other.x && self.y > other.y {return Some(std::cmp::Ordering::Greater)}
+        Some(std::cmp::Ordering::Less)
+    }
+}

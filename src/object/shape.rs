@@ -1,9 +1,9 @@
 extern crate sdl2;
 
-pub use super::vec2D::Vec2D;
+pub use super::vec2d::Vec2D;
 
 pub struct Shape {
-    points: Vec<sdl2::rect::Point>,
+    pub points: Vec<sdl2::rect::Point>,
 }
 
 impl Shape {
@@ -16,8 +16,8 @@ impl Shape {
         temp
     }
 
-    //create a square shape
-    pub fn square (pos: Vec2D, dimensions: Vec2D) -> Shape {
+    //create a rectangle shape
+    pub fn rectangle (pos: Vec2D, dimensions: Vec2D) -> Shape {
         Shape::new(vec!(pos.clone(), pos.clone() + Vec2D::new(dimensions.x, 0.0), pos.clone() + dimensions.clone(), pos.clone() + Vec2D::new(0.0, dimensions.y)))
     }
 
